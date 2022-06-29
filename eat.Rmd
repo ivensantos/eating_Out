@@ -41,6 +41,40 @@ so we use cat~cat
 
 Inference: chi-squared and fisher exact tests
 
-## Descripitive Summaries
+# Descripitive Summaries
 
 ## Graphical Summary
+
+### barchart
+```{r}
+barchartGC(~eatout + race,data=mydata)
+barchartGC(~race + eatout,data=mydata, type="percent")
+
+```
+
+## Numerical summary
+
+```{r}
+table1 <- xtabs(~eatout + race, data=mydata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+this table shows that white people live closer to fast food chains.
+
+
+# Results
+
+## inferential results
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+
+```{r}
+fisherXY(mydata$race,mydata$eat)
+```
+For both charts whites go to eat out far more than the other races. maybe because they don't know how to cook. 
